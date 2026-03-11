@@ -1,8 +1,26 @@
+/* ==========================================================================
+   1. IMPORTACIÓN DE FUENTES
+   Aquí traemos las tipografías desde Google Fonts. 
+   - 'Inter': Para el texto principal (lectura fácil).
+   - 'Playfair Display': Para títulos (toque elegante y clásico).
+   ========================================================================== */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap");
 
+/* ==========================================================================
+   2. CONFIGURACIÓN DE TAILWIND CSS
+   Esta directiva importa todas las funcionalidades de Tailwind CSS, permitiéndonos
+   usar clases de utilidad directamente en nuestro HTML o mediante @apply.
+   ========================================================================== */
 @import "tailwindcss";
 
+/* ==========================================================================
+   3. ESTILOS BASE (@layer base)
+   Aquí definimos estilos que se aplican a etiquetas HTML estándar y variables 
+   globales que usaremos en todo el proyecto.
+   ========================================================================== */
 @layer base {
+  /* Variables de CSS: Permiten definir colores y valores una sola vez 
+     y reutilizarlos fácilmente mediante var(--nombre). */
   :root {
     --text-primary: #0f172a;
     --text-secondary: #475569;
@@ -10,12 +28,16 @@
     --border: #e2e8f0;
   }
 
+  /* Estilos para el cuerpo de la página (body): 
+     Configura la fuente, el color de fondo y suavizado de texto global. */
   body {
     @apply font-sans m-0 p-0 text-slate-900 bg-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Estilos para todos los encabezados (h1 a h6):
+     Se usa la fuente 'serif' (Playfair Display) definida en la configuración. */
   h1,
   h2,
   h3,
@@ -26,17 +48,28 @@
   }
 }
 
+/* ==========================================================================
+   4. COMPONENTES PERSONALIZADOS (@layer components)
+   Aquí creamos clases reutilizables combinando utilidades de Tailwind. 
+   Esto ayuda a mantener el HTML limpio y el diseño consistente.
+   ========================================================================== */
 @layer components {
+  /* Botón principal: Define padding, color de fondo, bordes redondeados y efectos hover. */
   .btn-primary {
     @apply px-4 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors shadow-sm;
   }
 
+  /* Enlaces de navegación: Estiliza los links del menú con transiciones suaves. */
   .nav-link {
     @apply text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors uppercase tracking-wider;
   }
 }
 
-/* Custom Scrollbar for premium feel */
+/* ==========================================================================
+   5. PERSONALIZACIÓN DE LA BARRA DE DESPLAZAMIENTO (Scrollbar)
+   Estilos específicos para navegadores basados en Webkit (Chrome, Safari, Edge)
+   para darle un aspecto más moderno y 'premium'.
+   ========================================================================== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -54,7 +87,11 @@
   background: #94a3b8;
 }
 
-/* Global Selection */
+/* ==========================================================================
+   6. SELECCIÓN DE TEXTO (Global Selection)
+   Cambia el color de fondo y del texto cuando el usuario selecciona 
+   fragmentos del contenido de la página.
+   ========================================================================== */
 ::selection {
   background: rgba(37, 99, 235, 0.1);
   color: #2563eb;
