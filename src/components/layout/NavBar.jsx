@@ -10,7 +10,7 @@ function NavBar() {
   /* Array de categorías de navegación. */
   const navItems = [
     'TECH', 'LIFE', 'CULTURE', 'POLITICS', 
-    'BUSINESS', 'SCIENCE', 'OPINION', 'SPORTS'
+    'PHILOSOPHY', 'SCIENCE', 'OPINION', 'SPORTS'
   ];
 
   return (
@@ -27,7 +27,7 @@ function NavBar() {
         {/* Logo: Link nos lleva a la página de inicio (/) */}
         <Link to="/" className="absolute left-1/2 -translate-x-1/2">
           <h1 className="text-2xl md:text-3xl font-serif font-bold tracking-tight text-slate-900 whitespace-nowrap">
-            THE DAILY LEDGER
+            THE ORDINARY LIFE
           </h1>
         </Link>
 

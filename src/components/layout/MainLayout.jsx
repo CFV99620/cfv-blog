@@ -21,7 +21,7 @@ function MainLayout() {
       <footer className="w-full bg-slate-900 py-12 text-white">
         <div className="max-w-7xl mx-auto px-4">
           <p className="text-center text-slate-400 text-sm">
-            © 2024 THE DAILY LEDGER MEDIA GROUP. ALL RIGHTS RESERVED.
+            © 2026 THE CFV LIFE. ALL RIGHTS RESERVED.
           </p>
         </div>
       </footer>
