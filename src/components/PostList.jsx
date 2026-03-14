@@ -8,6 +8,7 @@ import api from "../api/api";
  */
 function PostList() {
   const [posts, setPosts] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
     /* Llamada a la API para obtener los posts */
@@ -48,7 +49,7 @@ function PostList() {
 
       {/* Lista de Posts */}
       <div className="space-y-12">
-        {posts.map(post => (
+        {posts.slice(0, visibleCount).map(post => (
           /* Enlace envolvente: Redirecciona al detalle del post usando su slug */
           <Link key={post.id} to={`/post/${post.id}`} className="group block focus:outline-none">
             <article className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8">
@@ -91,12 +92,27 @@ function PostList() {
         ))}
       </div>
 
-      {/* Botón de Carga: Estilizado como en la imagen */}
+      {/* Botón de Carga: Se muestra solo si hay más posts por cargar */}
+      {/* condicion && (renderizado true) en caso de false no ejecuta el segmento Se le conoce como evaluación de "cortocircuito" (short-circuit evaluation). */}
+      {visibleCount < posts.length ? 
+        <div className="mt-16 pt-8 border-t border-slate-100 italic">
+          <button 
+            onClick={() => setVisibleCount(posts.length)}
+            className="w-full py-4 px-6 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 font-bold hover:bg-slate-100 transition-colors text-sm"
+          >
+            Load More Stories
+          </button>
+        </div>
+      :
       <div className="mt-16 pt-8 border-t border-slate-100 italic">
-        <button className="w-full py-4 px-6 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 font-bold hover:bg-slate-100 transition-colors text-sm">
-          Load More Stories
+        <button 
+          onClick={() => setVisibleCount(2)}
+          className="w-full py-4 px-6 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 font-bold hover:bg-slate-100 transition-colors text-sm"
+        >
+          Show Less Stories
         </button>
       </div>
+      }
 
     </div>
   );
