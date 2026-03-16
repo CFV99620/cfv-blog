@@ -40,7 +40,7 @@ function PostList() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-4">
+    <div className="w-full py-4">
       
       {/* Encabezado Principal: border-l-4 crea la línea azul lateral (cfv nota) */}
       <h2 className="text-xl font-bold border-l-4 border-blue-600 pl-3 mb-10 text-slate-900 tracking-tight uppercase">
@@ -66,11 +66,11 @@ function PostList() {
 
               {/* Contenido (Texto) a la derecha */}
               <div className="flex flex-col justify-center">
-              {/* Categoría (Opcional, usando un valor estático o de post) 
+              {/* Categoría (Opcional, usando un valor estático o de post) */}
               <span className="text-[10px] font-bold text-blue-600 tracking-widest uppercase mb-2">
-                {post.category || "URBANISM"}
+                {post.categories?.join(' - ')}
               </span>
-              */}
+              
 
                 {/* Título: font-serif para ese toque de periódico elegante */}
                 <h3 className="text-2xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors mb-3">

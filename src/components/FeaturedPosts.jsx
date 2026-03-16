@@ -53,7 +53,7 @@ function FeaturedPosts() {
   const post = featuredPosts[currentIndex];
 
   return (
-    <div className="max-w-4xl mx-auto py-8 mb-12 relative group">
+    <div className="w-full py-4 lg:py-8 mb-8 relative group">
       
       {/* Contenedor principal de la imagen (Hero) */}
       <Link to={`/post/${post.id}`} className="block focus:outline-none">
@@ -98,7 +98,7 @@ function FeaturedPosts() {
         <Link to={`/post/${post.id}`} className="block group/text">
           {/* Categoría */}
           <span className="text-xs font-bold text-blue-600 tracking-[0.15em] uppercase mb-4 block">
-            {post.category || "TECHNOLOGY • FEATURE"}
+            {post.categories?.join(' - ')}
           </span>
 
           {/* Título Grande */}
