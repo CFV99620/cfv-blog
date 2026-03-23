@@ -8,10 +8,9 @@ function FeaturedPosts() {
 
   useEffect(() => {
     // Fetch solo posts destacados (podría optimizarse en el backend, por ahora filtramos aquí)
-    api.get("/api/posts/list")
+    api.get("/api/posts/list/featured")
       .then(res => {
-        const featured = res.data.filter(post => post.featured === true);
-        setFeaturedPosts(featured);
+        setFeaturedPosts(res.data);
       })
       .catch(err => console.error("Error al cargar posts destacados:", err));
   }, []);
@@ -30,7 +29,7 @@ function FeaturedPosts() {
   }, [featuredPosts.length]);
 
   const getImageUrl = (url) => {
-    if (!url) return "https://via.placeholder.com/800x400?text=No+Image";
+    if (!url) return "https://placehold.co/800x400?text=No+Image";
     const driveIdMatch = url.match(/[-\w]{25,}/);
     if (driveIdMatch && driveIdMatch[0]) {
       return `https://lh3.googleusercontent.com/d/${driveIdMatch[0]}`;
@@ -61,7 +60,7 @@ function FeaturedPosts() {
           <img 
             src={getImageUrl(post.coverImage)} 
             alt={post.title}
-            onError={(e) => { e.target.src = "https://via.placeholder.com/800x400?text=Error+Loading+Image"; }}
+            onError={(e) => { e.target.src = "https://placehold.co/800x400?text=Error+Loading+Image"; }}
             className="w-full h-full object-cover opacity-90 transition-all duration-700 hover:scale-105 hover:opacity-100"
           />
           {/* Opcional: Gradiente oscuro sutil interior para darle el look premium */}

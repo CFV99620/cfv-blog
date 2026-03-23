@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import api from '../api/api';
 
 function Sidebar() {
   const [email, setEmail] = useState('');
@@ -11,13 +12,15 @@ function Sidebar() {
     console.log('Registrando usuario con:', email);
   };
 
-  // Datos de ejemplo para los enlaces recomendados
-  const recommendedLinks = [
-    { title: "El futuro del desarrollo de inteligencia artificial", url: "#", id: 1 },
-    { title: "Cómo optimizar tu código en React y Tailwind", url: "#", id: 2 },
-    { title: "Tendencias de UI/UX que debes conocer este año", url: "#", id: 3 },
-    { title: "Guía completa de autenticación para tu sitio", url: "#", id: 4 },
-  ];
+  const [recommendedLinks, setRecommendedLinks] = useState([]);
+
+  useEffect(() => {
+    api.get("/api/recommendations/list/featured")
+      .then(res => {
+        setRecommendedLinks(res.data);
+      })
+      .catch(err => console.error("Error al cargar recommendations destacados:", err));
+  }, []);
 
   return (
     <aside className="space-y-10 py-4 lg:py-8 lg:pl-6">

@@ -25,7 +25,7 @@ function PostList() {
    * Las URLs de Drive a veces necesitan ser transformadas para mostrarse en un tag <img>.
    */
   const getImageUrl = (url) => {
-    if (!url) return "https://via.placeholder.com/400x250?text=No+Image";
+    if (!url) return "https://placehold.co/400x250?text=No+Image";
     // Si es un link de Drive tipo 'view', intentamos convertirlo a un link de imagen directa
     //return url.replace("file/d/", "uc?export=view&id=").replace("/view?usp=sharing", "").replace("/view", "");
 
@@ -59,7 +59,7 @@ function PostList() {
                 <img 
                   src={getImageUrl(post.coverImage)} 
                   alt={post.title}
-                  onError={(e) => { e.target.src = "https://via.placeholder.com/400x250?text=Error+Loading+Image"; }}
+                  onError={(e) => { e.target.src = "https://placehold.co/400x250?text=Error+Loading+Image"; }}
                   className="w-full h-48 md:h-56 object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
