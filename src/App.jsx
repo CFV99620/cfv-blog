@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';/* - 'react-rout
 import MainLayout from './components/layout/MainLayout';
 import Home from './pages/Home';
 import PostDetail from './components/PostDetail';
+import Category from './pages/Category';
 
 /**
  * Componente Principal (App):
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>{/* cfv nota: Es la definición de cada camino específico en este cas para la ruta "/" */}
           <Route index element={<Home />} /> {/* 'index' indica que este es el componente por defecto que se muestra cuando el usuario entra a la raíz ("/") del sitio.*/}
           <Route path="post/:id" element={<PostDetail />} />
+          <Route path="category/:category" element={<Category />} />
           
           {/* Aquí podrás añadir más rutas en el futuro, por ejemplo:
               <Route path="about" element={<About />} /> 

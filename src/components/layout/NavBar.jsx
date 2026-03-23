@@ -49,7 +49,7 @@ function NavBar() {
           {navItems.map((item) => (
             <Link 
               key={item} 
-              to={`/category/${item.toLowerCase()}`}
+              to={`/category/${item}`}
               className="nav-link whitespace-nowrap"
             >
               {item}

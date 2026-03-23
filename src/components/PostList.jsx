@@ -6,19 +6,23 @@ import api from "../api/api";
  * Componente PostList:
  * Muestra una lista de los artículos más recientes con una imagen y un resumen.
  */
-function PostList() {
+function PostList({ category }) {
   const [posts, setPosts] = useState([]);
   const [visibleCount, setVisibleCount] = useState(2);
 
   useEffect(() => {
     /* Llamada a la API para obtener los posts */
-    api.get("/api/posts/list")
+    const endpoint = category 
+      ? `/api/posts/list/category/${category}` 
+      : "/api/posts/list";
+
+    api.get(endpoint)
       .then(res => {
         console.log("Posts recibidos:", res.data); // Log para depuración
         setPosts(res.data);
       })
       .catch(err => console.error("Error al cargar posts:", err));
-  }, []);
+  }, [category]);
 
   /**
    * Helper para limpiar URLs de Google Drive (cfv nota):

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/api';
 
-function Sidebar() {
+function Sidebar({ category }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,12 +15,16 @@ function Sidebar() {
   const [recommendedLinks, setRecommendedLinks] = useState([]);
 
   useEffect(() => {
-    api.get("/api/recommendations/list/featured")
+    const endpoint = category 
+      ? `/api/recommendations/list/category/${category}` 
+      : "/api/recommendations/list/featured";
+
+    api.get(endpoint)
       .then(res => {
         setRecommendedLinks(res.data);
       })
       .catch(err => console.error("Error al cargar recommendations destacados:", err));
-  }, []);
+  }, [category]);
 
   return (
     <aside className="space-y-10 py-4 lg:py-8 lg:pl-6">
@@ -28,7 +32,7 @@ function Sidebar() {
       {/* Sección de Enlaces Recomendados */}
       <div>
         <h3 className="text-xl font-bold border-l-4 border-blue-600 pl-3 mb-6 text-slate-900 tracking-tight uppercase">
-          Recomendado
+          Recomendaciones
         </h3>
         <ul className="space-y-5 mt-4">
           {recommendedLinks.map((link, index) => (
