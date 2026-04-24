@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';/* - 'react-router-dom': Librería estándar para manejar la navegación entre páginas.*/
 import MainLayout from './components/layout/MainLayout';
+import AdminLayout from './components/layout/AdminLayout';
 import Home from './pages/Home';
 import PostDetail from './components/PostDetail';
 import Category from './pages/Category';
+import AdminPanel from './pages/AdminPanel';
 
 /**
  * Componente Principal (App):
@@ -16,6 +18,7 @@ function App() {
     /* BrowserRouter: Envuelve toda la aplicación para habilitar el uso de URLs. // cfv nota: le dice a React: "escucha los cambios en la barra de direcciones del navegador".*/
     <BrowserRouter>
       <Routes>{/*Routes: Actúa como un contenedor que busca la mejor coincidencia entre las rutas definidas. cfv nota: decide qué componente mostrar dependiendo de lo escrito en la URL.*/}
+        {/* Rutas Públicas */}
         <Route path="/" element={<MainLayout />}>{/* cfv nota: Es la definición de cada camino específico en este cas para la ruta "/" */}
           <Route index element={<Home />} /> {/* 'index' indica que este es el componente por defecto que se muestra cuando el usuario entra a la raíz ("/") del sitio.*/}
           <Route path="post/:id" element={<PostDetail />} />
@@ -24,6 +27,11 @@ function App() {
           {/* Aquí podrás añadir más rutas en el futuro, por ejemplo:
               <Route path="about" element={<About />} /> 
           */}
+        </Route>
+
+        {/* Rutas de Administración */}
+        <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<AdminPanel />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'; /* - 'Outlet': Es un "espacio reservado" donde se renderizarán las páginas hijas. */
-import NavBar from './NavBar';
+import Head from './Head';
+import NavBar from '../NavBar';
 
 /**
  * Componente MainLayout:
@@ -10,7 +11,8 @@ function MainLayout() {
   return (
     /* Contenedor principal: min-h-screen asegura que el layout ocupe al menos toda la altura de la pantalla. */
     <div className="min-h-screen flex flex-col bg-white">
-      <NavBar /> {/* Barra de navegación global */}
+      <Head /> {/* Barra de navegación global */}
+      <NavBar />
       {/* Área de contenido principal: max-w-7xl limita el ancho para que no se estire demasiado en pantallas grandes. */}
       <main className="grow max-w-7xl mx-auto px-4 w-full py-8">
         {/* Outlet (cfv nota): Aquí es donde React Router "inyecta" el componente que corresponda a la ruta actual (por ejemplo, PostList si estamos en la raíz). */}
