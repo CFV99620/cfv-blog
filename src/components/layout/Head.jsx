@@ -1,5 +1,5 @@
-import { Search } from 'lucide-react'; /* - 'Search': Componente de icono para la funcionalidad de búsqueda. */
-import { Link } from 'react-router-dom'; /* - 'Link': Componente de React Router para crear enlaces de navegación sin recargar la página. */
+import { Search, ArrowLeft } from 'lucide-react'; /* - 'Search': Componente de icono para la funcionalidad de búsqueda. *//** cfv nota: se agrego ArrowLeft es un icono para volver a la pagina de inicio desde el panel de administracion */
+import { Link, useLocation } from 'react-router-dom'; /* - 'Link': Componente de React Router para crear enlaces de navegación sin recargar la página. */ /** cfv nota: useLocation es un hook de React Router para obtener la ubicación actual */
 
 /**
  * Componente Head:
@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'; /* - 'Link': Componente de React Router
  * cfv nota: los comentarios dentro del componente JSX se envuelven en bloques especiales de llaves y asteriscos.
  */
 function Head() {
+  const location = useLocation();
+  const isAdmin = location.pathname === '/admin';
 
   return (
     /* header: Etiqueta semántica para el encabezado de la página. */
@@ -25,6 +27,17 @@ function Head() {
             THE ORDINARY LIFE
           </h1>
         </Link>
+
+        {/* Right Side - Publish/Home Button */}
+        <div className="flex items-center">
+          <Link 
+            to={isAdmin ? "/" : "/admin"} 
+            className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-colors shadow-sm"
+          >
+            {isAdmin && <ArrowLeft size={16} />}
+            <span>{isAdmin ? "Home" : "Publicar"}</span>
+          </Link>
+        </div>
 
       </div>
 
