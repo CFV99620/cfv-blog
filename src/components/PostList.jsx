@@ -55,7 +55,7 @@ function PostList({ category }) {
       <div className="space-y-12">
         {posts.slice(0, visibleCount).map(post => (
           /* Enlace envolvente: Redirecciona al detalle del post usando su slug */
-          <Link key={post.id} to={`/post/${post.id}`} className="group block focus:outline-none">
+          <Link key={post.id} to={`/post/${post.id}`} state={{ post }} className="group block focus:outline-none">
             <article className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-8">
               
               {/* Imagen del Post */}

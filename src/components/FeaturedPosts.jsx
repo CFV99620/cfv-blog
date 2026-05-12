@@ -55,7 +55,7 @@ function FeaturedPosts() {
     <div className="w-full py-4 lg:py-8 mb-8 relative group">
       
       {/* Contenedor principal de la imagen (Hero) */}
-      <Link to={`/post/${post.id}`} className="block focus:outline-none">
+      <Link to={`/post/${post.id}`} state={{ post }} className="block focus:outline-none">
         <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg border border-slate-100 bg-slate-900">
           <img 
             src={getImageUrl(post.coverImage)} 
@@ -94,7 +94,7 @@ function FeaturedPosts() {
 
       {/* Contenido (Textos debajo de la imagen como en la referencia) */}
       <div className="mt-8 px-2 md:px-0">
-        <Link to={`/post/${post.id}`} className="block group/text">
+        <Link to={`/post/${post.id}`} state={{ post }} className="block group/text">
           {/* Categoría */}
           <span className="text-xs font-bold text-blue-600 tracking-[0.15em] uppercase mb-4 block">
             {post.categories?.join(' - ')}
